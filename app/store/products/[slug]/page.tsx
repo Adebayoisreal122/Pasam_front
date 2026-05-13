@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useParams } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import { ShoppingCart, Plus, Minus, MessageCircle, CheckCircle, Package, ArrowLeft, Tag } from 'lucide-react'
 import { productAPI } from '@/services/api'
 import { useCart } from '@/context/CartContext'
@@ -18,6 +18,7 @@ const { slug } = useParams<{ slug: string }>()
   const [loading, setLoading] = useState(true)
   const [qty,     setQty]     = useState(1)
   const [imgIdx,  setImgIdx]  = useState(0)
+  const router = useRouter()
 
   useEffect(() => {
     if (!slug) return
@@ -29,7 +30,8 @@ const { slug } = useParams<{ slug: string }>()
       .catch(console.error)
       .finally(() => setLoading(false))
 
-  }, [slug])
+      if (!slug) router.push('/products')
+  }, [slug, router])
 
   if (loading) return <PageLoader />
   if (!product) return <div className="text-center py-20 text-gray-500">Product not found</div>
