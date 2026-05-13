@@ -47,7 +47,7 @@ export default function CategoryPage() {
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="mb-7">
-        <Link href="/products" className="text-sm text-green-600 hover:underline font-medium">
+        <Link href="/store/products" className="text-sm text-green-600 hover:underline font-medium">
           ← All Products
         </Link>
         <h1 className="font-display font-extrabold text-2xl text-gray-900 mt-2">
@@ -92,7 +92,7 @@ export default function CategoryPage() {
             This category has no products yet. Check back soon!
           </p>
           <Button asChild variant="outline">
-            <Link href="/products">Browse All Products</Link>
+            <Link href="/store/products">Browse All Products</Link>
           </Button>
         </div>
       )}

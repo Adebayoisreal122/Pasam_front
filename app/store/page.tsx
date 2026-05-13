@@ -65,7 +65,7 @@ export default function HomePage() {
             </p>
             <div className="flex flex-wrap gap-3 mb-10">
               <Button size="lg" asChild>
-                <Link href="/products">Shop Now <ArrowRight size={17} /></Link>
+                <Link href="/store/products">Shop Now <ArrowRight size={17} /></Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
                 <Link href="/store/bulk-quote">Request Bulk Quote</Link>
@@ -132,7 +132,7 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-8">
             <h2 className="font-display font-extrabold text-2xl text-gray-900">Shop by Category</h2>
-            <Link href="/products" className="flex items-center gap-1 text-green-600 font-semibold text-sm hover:gap-2 transition-all">
+            <Link href="/store/products" className="flex items-center gap-1 text-green-600 font-semibold text-sm hover:gap-2 transition-all">
               View all <ArrowRight size={14} />
             </Link>
           </div>
@@ -161,7 +161,7 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-8">
             <h2 className="font-display font-extrabold text-2xl text-gray-900">Featured Packages</h2>
-            <Link href="/products?featured=true" className="flex items-center gap-1 text-green-600 font-semibold text-sm hover:gap-2 transition-all">
+            <Link href="/store/products?featured=true" className="flex items-center gap-1 text-green-600 font-semibold text-sm hover:gap-2 transition-all">
               View all <ArrowRight size={14} />
             </Link>
           </div>
@@ -177,7 +177,7 @@ export default function HomePage() {
             <div className="text-center py-20">
               <Package size={48} className="text-gray-300 mx-auto mb-4" />
               <p className="text-gray-500 mb-4">Products coming soon!</p>
-              <Button asChild variant="outline"><Link href="/products">Browse All</Link></Button>
+              <Button asChild variant="outline"><Link href="/store/products">Browse All</Link></Button>
             </div>
           )}
         </div>

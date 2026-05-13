@@ -57,7 +57,7 @@ export default function CartDrawer() {
               <p className="text-sm text-gray-400">Add products to get started</p>
             </div>
             <Button size="sm" asChild onClick={() => setIsOpen(false)}>
-              <Link href="/products">Browse Products</Link>
+              <Link href="store/products">Browse Products</Link>
             </Button>
           </div>
         ) : (

@@ -30,7 +30,7 @@ export default function MyOrdersPage() {
           </div>
           <h3 className="font-display font-bold text-lg text-gray-700 mb-2">No orders yet</h3>
           <p className="text-gray-500 text-sm mb-5">Start shopping to see your orders here!</p>
-          <Button asChild><Link href="/products">Browse Products</Link></Button>
+          <Button asChild><Link href="/store/products">Browse Products</Link></Button>
         </div>
       ) : (
         <div className="space-y-3">

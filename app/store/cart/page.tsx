@@ -44,7 +44,7 @@ export default function CartPage() {
       </div>
       <h2 className="font-display font-extrabold text-2xl text-gray-800 mb-2">Your cart is empty</h2>
       <p className="text-gray-500 mb-6">Looks like you haven&apos;t added anything yet.</p>
-      <Button asChild><Link href="/products">Browse Products</Link></Button>
+      <Button asChild><Link href="/store/products">Browse Products</Link></Button>
     </div>
   )
 
@@ -65,7 +65,7 @@ export default function CartPage() {
                   : <Package size={28} className="text-gray-300" />}
               </div>
               <div className="flex-1 min-w-0">
-                <Link href={`/products/${item.slug||item._id}`}
+                <Link href={`/store/products/${item.slug||item._id}`}
                   className="font-semibold text-gray-800 hover:text-green-600 transition-colors line-clamp-2 leading-snug text-sm">
                   {item.name}
                 </Link>
@@ -135,7 +135,7 @@ export default function CartPage() {
             <Button className="w-full" onClick={() => router.push(isAuthenticated ? '/store/checkout' : '/auth/login?redirect=/store/checkout')}>
               Proceed to Checkout <ArrowRight size={15} />
             </Button>
-            <Link href="/products"
+            <Link href="/store/products"
               className="flex items-center justify-center gap-1.5 mt-3 text-sm text-gray-500 hover:text-green-600 transition-colors">
               <ShoppingBag size={14} /> Continue Shopping
             </Link>
