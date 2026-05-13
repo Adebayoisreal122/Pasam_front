@@ -49,7 +49,7 @@ export default function OrderSuccessPage() {
               <Package size={16} /> Track My Order
             </Link>
           </Button>
-          <Link href="/store/products"
+          <Link href="/products"
             className="text-sm text-gray-500 hover:text-green-600 transition-colors flex items-center justify-center gap-1">
             Continue Shopping <ArrowRight size={13} />
           </Link>

@@ -13,7 +13,7 @@ import { cn } from '@/lib/utils'
 
 const NAV_LINKS = [
   { label: 'Home',          href: '/store' },
-  { label: 'Products',      href: '/store/products' },
+  { label: 'Products',      href: '/products' },
   { label: 'Student Packs', href: '/store/categories/student-packages' },
   { label: 'Family Packs',  href: '/store/categories/family-packages' },
   { label: 'Bulk Orders',   href: '/store/bulk-quote' },
@@ -78,7 +78,7 @@ export default function Navbar() {
           {/* Actions */}
           <div className="flex items-center gap-2">
             <Button variant="ghost" size="icon" className="hidden sm:flex rounded-full"
-              onClick={() => router.push('/store/products')}>
+              onClick={() => router.push('/products')}>
               <Search size={18} />
             </Button>
 

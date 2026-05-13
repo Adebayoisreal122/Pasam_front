@@ -41,7 +41,7 @@ const { slug } = useParams<{ slug: string }>()
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-      <Link href="/store/products" className="flex items-center gap-1.5 text-sm text-green-600 font-semibold hover:underline mb-6">
+      <Link href="/products" className="flex items-center gap-1.5 text-sm text-green-600 font-semibold hover:underline mb-6">
         <ArrowLeft size={14} /> Back to Products
       </Link>
 

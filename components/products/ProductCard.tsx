@@ -24,7 +24,7 @@ export default function ProductCard({ product }: { product: Product }) {
 
   const image = product.images?.[0]?.url
 
-  const href = `/store/products/${product.slug}`
+  const href = `/products/${product.slug}`
 
   const discount = product.originalPrice
     ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)

@@ -25,7 +25,7 @@ export default function Footer() {
             <h4 className="text-white font-semibold text-sm mb-3">Quick Links</h4>
             <ul className="space-y-2 text-sm">
               {[
-                { href: '/store/products',                       label: 'All Products' },
+                { href: '/products',                       label: 'All Products' },
                 { href: '/store/categories/student-packages',    label: 'Student Packages' },
                 { href: '/store/categories/family-packages',     label: 'Family Packages' },
                 { href: '/store/bulk-quote',                     label: 'Bulk Orders' },
