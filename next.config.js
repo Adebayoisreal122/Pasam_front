@@ -1,14 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-   async redirects() {
-    return [
-      {
-        source: '/store/products/:slug',
-        destination: '/products/:slug',
-        permanent: true, // SEO 301 redirect
-      },
-    ]
-  },
+
   images: {
     domains: ['res.cloudinary.com', 'images.unsplash.com'],
   },
