@@ -57,12 +57,12 @@ export default function ProductsContent() {
 
   return (
 
-        <div
-        // fallback={
-        //   <div className="flex items-center justify-center min-h-[60vh]">
-        //     <div className="w-10 h-10 border-4 border-gray-200 border-t-green-500 rounded-full animate-spin" />
-        //   </div>
-        // }
+        <Suspense
+        fallback={
+          <div className="flex items-center justify-center min-h-[60vh]">
+            <div className="w-10 h-10 border-4 border-gray-200 border-t-green-500 rounded-full animate-spin" />
+          </div>
+        }
         >          
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="mb-6">
@@ -144,6 +144,6 @@ export default function ProductsContent() {
         </div>
       )}
     </div>
-        </div>
+  </Suspense>
   )
 }
