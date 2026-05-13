@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useParams, useRouter } from 'next/navigation'
+import { useParams } from 'next/navigation'
 import { ShoppingCart, Plus, Minus, MessageCircle, CheckCircle, Package, ArrowLeft, Tag } from 'lucide-react'
 import { productAPI } from '@/services/api'
 import { useCart } from '@/context/CartContext'
@@ -12,26 +12,16 @@ import { formatPrice } from '@/lib/utils'
 import toast from 'react-hot-toast'
 
 export default function ProductDetailPage() {
-const { slug } = useParams<{ slug: string }>()
+  const { id }    = useParams<{ id: string }>()
   const { addItem }= useCart()
   const [product, setProduct] = useState<any>(null)
   const [loading, setLoading] = useState(true)
   const [qty,     setQty]     = useState(1)
   const [imgIdx,  setImgIdx]  = useState(0)
-  const router = useRouter()
 
   useEffect(() => {
-    if (!slug) return
-
-    setLoading(true)
-
-    productAPI.getBySlug(slug)
-      .then(res => setProduct(res.data.product))
-      .catch(console.error)
-      .finally(() => setLoading(false))
-
-      if (!slug) router.push('/products')
-  }, [slug, router])
+    productAPI.getOne(id).then(r => setProduct(r.data.product)).catch(console.error).finally(() => setLoading(false))
+  }, [id])
 
   if (loading) return <PageLoader />
   if (!product) return <div className="text-center py-20 text-gray-500">Product not found</div>
@@ -41,7 +31,7 @@ const { slug } = useParams<{ slug: string }>()
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-      <Link href="/products" className="flex items-center gap-1.5 text-sm text-green-600 font-semibold hover:underline mb-6">
+      <Link href="/store/products" className="flex items-center gap-1.5 text-sm text-green-600 font-semibold hover:underline mb-6">
         <ArrowLeft size={14} /> Back to Products
       </Link>
 

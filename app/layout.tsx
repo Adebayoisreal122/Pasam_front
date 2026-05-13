@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
-import './globals.css'
 import { Toaster } from 'react-hot-toast'
 import { AuthProvider } from '@/context/AuthContext'
 import { CartProvider } from '@/context/CartContext'
+import './globals.css'
 
 export const metadata: Metadata = {
   title: 'PASAM Store — Fresh Food Packages Delivered',
