@@ -12,7 +12,7 @@ import { formatPrice } from '@/lib/utils'
 import toast from 'react-hot-toast'
 
 export default function ProductDetailPage() {
-  const { id }    = useParams<{ id: string }>()
+const { slug } = useParams<{ slug: string }>()
   const { addItem }= useCart()
   const [product, setProduct] = useState<any>(null)
   const [loading, setLoading] = useState(true)
@@ -20,8 +20,16 @@ export default function ProductDetailPage() {
   const [imgIdx,  setImgIdx]  = useState(0)
 
   useEffect(() => {
-    productAPI.getOne(id).then(r => setProduct(r.data.product)).catch(console.error).finally(() => setLoading(false))
-  }, [id])
+    if (!slug) return
+
+    setLoading(true)
+
+    productAPI.getBySlug(slug)
+      .then(res => setProduct(res.data.product))
+      .catch(console.error)
+      .finally(() => setLoading(false))
+
+  }, [slug])
 
   if (loading) return <PageLoader />
   if (!product) return <div className="text-center py-20 text-gray-500">Product not found</div>
