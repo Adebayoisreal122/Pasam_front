@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { MapPin, Phone, User, CreditCard, CheckCircle, Building, Package } from 'lucide-react'
 import { useCart } from '@/context/CartContext'
@@ -11,59 +11,98 @@ import { formatPrice } from '@/lib/utils'
 import toast from 'react-hot-toast'
 import Image from 'next/image'
 
-const DELIVERY_FEES: Record<string, number> = { Lagos:1500, Abuja:2000, Ibadan:1000, 'Port Harcourt':2500, Kano:3000 }
+const DELIVERY_FEES: Record<string, number> = {
+  Lagos: 1500, Abuja: 2000, Ibadan: 1000, 'Port Harcourt': 2500, Kano: 3000
+}
 const DEFAULT_FEE = 2000
-const CITIES = ['Ibadan','Lagos','Abuja','Port Harcourt','Kano','Ogbomosho','Abeokuta','Other']
+const CITIES = ['Ibadan', 'Lagos', 'Abuja', 'Port Harcourt', 'Kano', 'Ogbomosho', 'Abeokuta', 'Other']
 
 export default function CheckoutContent() {
-  const router   = useRouter()
+  const router = useRouter()
   const { user } = useAuth()
   const { items, subtotal, discount, coupon, clearCart } = useCart()
 
   const [delivery, setDelivery] = useState({
-    fullname: user?.fullname||'', phone: user?.phone||'',
-    address:'', city:'Ibadan', state:'Oyo', landmark:'', notes:'',
+    fullname: user?.fullname || '', phone: user?.phone || '',
+    address: '', city: 'Ibadan', state: 'Oyo', landmark: '', notes: '',
   })
   const [loading, setLoading] = useState(false)
+  const [orderPlaced, setOrderPlaced] = useState(false)
 
-  const d = (key: string) => (e: React.ChangeEvent<HTMLInputElement|HTMLSelectElement>) =>
+  useEffect(() => {
+    // Only redirect to cart if order hasn't been placed yet
+    if (!items.length && !orderPlaced) {
+      router.push('/store/cart')
+    }
+  }, [items, router, orderPlaced])
+
+  if (!items.length && !orderPlaced) return null
+
+  const d = (key: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
     setDelivery(p => ({ ...p, [key]: e.target.value }))
 
-  const fee   = DELIVERY_FEES[delivery.city] ?? DEFAULT_FEE
+  const fee = DELIVERY_FEES[delivery.city] ?? DEFAULT_FEE
   const total = subtotal + fee - discount
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!delivery.address) return toast.error('Enter your delivery address')
+    if (!delivery.address.trim()) return toast.error('Enter your delivery address')
+    if (!delivery.phone.trim())   return toast.error('Enter your phone number')
+
     setLoading(true)
     try {
       const { data } = await orderAPI.create({
         items: items.map(i => ({ product: i._id, quantity: i.quantity })),
         deliveryInfo: delivery,
-        couponCode: coupon?.code,
+        couponCode: coupon?.code || undefined,
         isSubscription: false,
       })
+
+      // Mark order as placed BEFORE clearing cart
+      // so the useEffect doesn't redirect to /store/cart
+      setOrderPlaced(true)
+
+      // Clear cart
       clearCart()
       toast.success('Order placed successfully!')
-      router.push(`/store/order-success/${data.order._id}?wa=${encodeURIComponent(data.whatsappLink||'')}`)
+
+      // Build redirect URL safely
+      const orderId = data.order?._id || data.order?.id
+      const waLink  = data.whatsappLink || ''
+
+      // Redirect to order success page
+      router.replace(
+        `/store/order-success/${orderId}?wa=${encodeURIComponent(waLink)}`
+      )
+
     } catch (err: any) {
-      toast.error(err.response?.data?.message || 'Order failed. Please try again.')
-    } finally { setLoading(false) }
-  }
+      console.error('Order error:', err)
 
- useEffect(() => {
-  if (!items.length) {
-    router.push('/store/cart')
-  }
-}, [items, router])
+      // Check if the order actually went through despite the error
+      const status = err.response?.status
+      const message = err.response?.data?.message || ''
 
-if (!items.length) return null
+      if (status === undefined) {
+        // Network timeout — order may have been created
+        toast.error(
+          'Network timeout. Check "My Orders" — your order may have been placed.',
+          { duration: 6000 }
+        )
+      } else {
+        toast.error(message || 'Order failed. Please try again.')
+      }
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <h1 className="font-display font-extrabold text-2xl text-gray-900 mb-7">Checkout</h1>
+
       <form onSubmit={handleSubmit} className="grid lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-5">
+
           {/* Delivery */}
           <div className="bg-white rounded-2xl shadow-[0_4px_16px_-2px_rgba(0,0,0,0.08)] p-6">
             <h2 className="font-display font-bold text-base text-gray-800 mb-4 flex items-center gap-2">
@@ -126,7 +165,11 @@ if (!items.length) return null
               </div>
               <div className="bg-white rounded-xl p-4 text-sm space-y-1.5">
                 <p className="font-bold text-gray-700 mb-2">Transfer payment to:</p>
-                {[['Bank','First Bank Nigeria'],['Account Number','1234567890'],['Account Name','PASAM Store Ltd']].map(([k,v]) => (
+                {[
+                  ['Bank', 'First Bank Nigeria'],
+                  ['Account Number', '1234567890'],
+                  ['Account Name', 'PASAM Store Ltd'],
+                ].map(([k, v]) => (
                   <div key={k} className="flex justify-between">
                     <span className="text-gray-500">{k}</span>
                     <span className="font-semibold font-mono">{v}</span>
@@ -141,7 +184,7 @@ if (!items.length) return null
           </div>
         </div>
 
-        {/* Summary */}
+        {/* Order Summary */}
         <div>
           <div className="bg-white rounded-2xl shadow-[0_4px_16px_-2px_rgba(0,0,0,0.08)] p-6 sticky top-24">
             <h2 className="font-display font-bold text-base text-gray-800 mb-4">Order Summary</h2>
@@ -157,23 +200,39 @@ if (!items.length) return null
                     <p className="text-xs font-semibold text-gray-700 truncate">{item.name}</p>
                     <p className="text-xs text-gray-400">x{item.quantity}</p>
                   </div>
-                  <span className="text-sm font-bold text-gray-700 flex-shrink-0">{formatPrice(item.price * item.quantity)}</span>
+                  <span className="text-sm font-bold text-gray-700 flex-shrink-0">
+                    {formatPrice(item.price * item.quantity)}
+                  </span>
                 </div>
               ))}
             </div>
             <hr className="border-gray-100 mb-4" />
             <div className="space-y-2 text-sm mb-5">
-              <div className="flex justify-between text-gray-600"><span>Subtotal</span><span className="font-semibold">{formatPrice(subtotal)}</span></div>
-              <div className="flex justify-between text-gray-600"><span>Delivery ({delivery.city})</span><span className="font-semibold">{formatPrice(fee)}</span></div>
-              {discount > 0 && <div className="flex justify-between text-green-600"><span>Discount</span><span className="font-semibold">-{formatPrice(discount)}</span></div>}
+              <div className="flex justify-between text-gray-600">
+                <span>Subtotal</span>
+                <span className="font-semibold">{formatPrice(subtotal)}</span>
+              </div>
+              <div className="flex justify-between text-gray-600">
+                <span>Delivery ({delivery.city})</span>
+                <span className="font-semibold">{formatPrice(fee)}</span>
+              </div>
+              {discount > 0 && (
+                <div className="flex justify-between text-green-600">
+                  <span>Discount</span>
+                  <span className="font-semibold">-{formatPrice(discount)}</span>
+                </div>
+              )}
               <hr className="border-gray-100" />
               <div className="flex justify-between">
                 <span className="font-bold text-gray-800">Total</span>
-                <span className="font-display font-extrabold text-xl text-green-600">{formatPrice(total)}</span>
+                <span className="font-display font-extrabold text-xl text-green-600">
+                  {formatPrice(total)}
+                </span>
               </div>
             </div>
             <Button type="submit" loading={loading} className="w-full">
-              <CheckCircle size={16} /> {loading ? 'Placing Order…' : 'Place Order'}
+              <CheckCircle size={16} />
+              {loading ? 'Placing Order…' : 'Place Order'}
             </Button>
           </div>
         </div>

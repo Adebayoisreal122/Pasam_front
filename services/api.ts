@@ -1,9 +1,11 @@
 import axios from 'axios'
 
 const API = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || ' https://pasam-back.onrender.com/api',
-  timeout: 30000,
+  baseURL: process.env.NEXT_PUBLIC_API_URL || 'https://pasam-back.onrender.com/api',
+  timeout: 60000,
 })
+
+
 
 API.interceptors.request.use((cfg) => {
   if (typeof window !== 'undefined') {

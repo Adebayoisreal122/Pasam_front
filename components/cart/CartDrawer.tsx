@@ -40,7 +40,7 @@ export default function CartDrawer() {
                 {itemCount}
               </span>
             )}
-          </div>
+          </div>      
           <button onClick={() => setIsOpen(false)}
             className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-500 transition-colors">
             <X size={18} />
@@ -57,7 +57,7 @@ export default function CartDrawer() {
               <p className="text-sm text-gray-400">Add products to get started</p>
             </div>
             <Button size="sm" asChild onClick={() => setIsOpen(false)}>
-              <Link href="store/products">Browse Products</Link>
+              <Link href="/store/products">Browse Products</Link>
             </Button>
           </div>
         ) : (
