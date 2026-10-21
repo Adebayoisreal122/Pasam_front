@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { Store, Phone, Mail, MapPin, MessageCircle } from 'lucide-react'
+import Image from 'next/image'
 
 export default function Footer() {
   const WA = process.env.NEXT_PUBLIC_WHATSAPP || '2348012345678'
@@ -11,10 +12,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           <div>
             <div className="flex items-center gap-2.5 mb-3">
-              <div className="w-8 h-8 rounded-lg bg-green-600 flex items-center justify-center">
-                <Store size={16} className="text-white" />
-              </div>
-              <span className="font-display font-extrabold text-lg text-white">PASAM Store</span>
+                        <Image
+                          src="/images/pasam.png"
+                          alt="PASAM — Food Packages. Fast Delivery."
+                          width={220}
+                          height={80}
+                          priority
+                          className="h-12 w-auto object-contain"
+                        />
             </div>
             <p className="text-sm text-gray-400 leading-relaxed">
               Fresh, affordable food packages delivered to your doorstep. Serving students, families and organizations across Nigeria.
