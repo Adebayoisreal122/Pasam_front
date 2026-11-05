@@ -14,6 +14,7 @@ import {
   ShieldCheck,
   Store,
 } from "lucide-react";
+import InstallButton from '@/components/pwa/InstallButton'
 import { useAuth } from "@/context/AuthContext";
 import { useCart } from "@/context/CartContext";
 import { Button } from "@/components/ui/button";
@@ -115,6 +116,7 @@ export default function Navbar() {
               onClick={() => setIsOpen(true)}
               className="relative w-9 h-9 flex items-center justify-center rounded-full text-gray-500 hover:bg-green-50 hover:text-green-600 transition-colors"
             >
+              <InstallButton />
               <ShoppingCart size={18} />
               {itemCount > 0 && (
                 <span className="absolute -top-0.5 -right-0.5 w-[18px] h-[18px] bg-orange-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center border-2 border-white">

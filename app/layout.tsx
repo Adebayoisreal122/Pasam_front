@@ -1,19 +1,32 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Toaster } from 'react-hot-toast'
 import { AuthProvider } from '@/context/AuthContext'
 import { CartProvider } from '@/context/CartContext'
+import ServiceWorkerRegister from '@/components/pwa/ServiceWorkerRegister'
 import './globals.css'
 
-export const metadata: Metadata = {
-  title: 'PASAM Store — Fresh Food Packages Delivered',
-  description: 'Affordable food packages for students, families, singles & organizations. Doorstep delivery across Nigeria.',
-  keywords: 'food packages, Nigeria, student pack, family pack, Ibadan, food delivery',
-}
+    export const metadata: Metadata = {
+      title: 'PASAM Store — Fresh Food Packages Delivered',
+      description: 'Affordable food packages for students, families, singles & organizations. Doorstep delivery across Nigeria.',
+      manifest: '/manifest.json',
+      appleWebApp: { capable: true, title: 'PASAM', statusBarStyle: 'default' },
+      icons: {
+        icon: '/icons/icon-192x192.png',
+        apple: '/icons/apple-touch-icon.png',
+      },
+    }
+
+    export const viewport: Viewport = {
+      themeColor: '#16a34a',
+      width: 'device-width',
+      initialScale: 1,
+    }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
+        <ServiceWorkerRegister />
         <AuthProvider>
           <CartProvider>
             {children}

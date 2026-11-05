@@ -6,6 +6,7 @@ import {
   Star, ChevronLeft, ChevronRight, GraduationCap,
   Home, Users, Award, TrendingUp, Package
 } from 'lucide-react'
+import InstallBanner from '@/components/pwa/InstallBanner'
 import { productAPI } from '@/services/api'
 import { Button } from '@/components/ui/button'
 import ProductCard from '@/components/products/ProductCard'
@@ -41,6 +42,7 @@ export default function HomePage() {
 
   return (
     <div>
+      <InstallBanner />
       {/* ── Hero ── */}
       <section className="relative min-h-[calc(100vh-70px)] flex items-center overflow-hidden bg-gradient-to-br from-green-50 via-white to-orange-50">
         <div className="absolute inset-0 pointer-events-none">

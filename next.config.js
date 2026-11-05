@@ -15,6 +15,18 @@ const nextConfig = {
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
     NEXT_PUBLIC_WHATSAPP: process.env.NEXT_PUBLIC_WHATSAPP,
   },
+
+      async headers() {
+      return [
+        {
+          source: '/sw.js',
+          headers: [
+            { key: 'Cache-Control', value: 'no-cache, no-store, must-revalidate' },
+            { key: 'Service-Worker-Allowed', value: '/' },
+          ],
+        },
+      ]
+    },
 }
 
 module.exports = nextConfig
