@@ -63,7 +63,7 @@ export default function HomePage() {
             </h1>
             <p className="text-gray-600 text-lg leading-relaxed max-w-lg mb-8">
               Affordable food packages for students, families, singles and organizations.
-              Order now and get doorstep delivery across Oyo State and beyond.
+              Order now and get doorstep delivery across Ogun State and beyond.
             </p>
             <div className="flex flex-wrap gap-3 mb-10">
               <Button size="lg" asChild>
@@ -111,7 +111,7 @@ export default function HomePage() {
       <section className="bg-white border-y border-gray-100 py-5">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 lg:grid-cols-4 gap-4">
           {[
-            { icon: Truck,          title: 'Fast Delivery',    desc: 'Same-day in Ibadan' },
+            { icon: Truck,          title: 'Fast Delivery',    desc: 'Same-day in Abeokuta' },
             { icon: ShieldCheck,    title: 'Fresh & Quality',  desc: 'Quality-checked items' },
             { icon: Clock,          title: 'Easy Ordering',    desc: 'Order in minutes' },
             { icon: MessageCircle,  title: 'WhatsApp Support', desc: 'Quick response' },

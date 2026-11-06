@@ -7,6 +7,7 @@ import { useAuth } from '@/context/AuthContext'
 import { Button } from '@/components/ui/button'
 import { Input, Label } from '@/components/ui/index'
 import toast from 'react-hot-toast'
+import Image from 'next/image'
 
 export default function LoginContent() {
   const { login } = useAuth()
@@ -48,7 +49,15 @@ export default function LoginContent() {
         </div>
         <div className="relative z-10 text-center">
           <div className="w-20 h-20 rounded-2xl bg-white/20 flex items-center justify-center mx-auto mb-6">
-            <Store size={40} className="text-white" />
+            {/* <Store size={40} className="text-white" /> */}
+                        <Image
+                          src="/images/logo.png"
+                          alt="PASAM — Food Packages. Fast Delivery."
+                          width={220}
+                          height={80}
+                          priority
+                          className="h-12 w-auto object-contain"
+                        />
           </div>
           <h1 className="font-display font-extrabold text-3xl mb-3">PASAM Store</h1>
           <p className="text-green-100 text-base leading-relaxed max-w-xs">

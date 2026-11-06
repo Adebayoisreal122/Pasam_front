@@ -8,6 +8,7 @@ import {
 } from 'lucide-react'
 import { useAuth } from '@/context/AuthContext'
 import { cn } from '@/lib/utils'
+import Image from 'next/image'
 
 const NAV = [
   { to: '/admin',            icon: LayoutDashboard, label: 'Dashboard',  exact: true },
@@ -53,7 +54,14 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <div className="flex items-center justify-between px-5 py-4 border-b border-white/10">
           <Link href="/store" className="flex items-center gap-2.5">
             <div className="w-8 h-8 rounded-lg bg-green-600 flex items-center justify-center">
-              <Store size={16} className="text-white" />
+                         <Image
+                           src="/images/logo.png"
+                           alt="PASAM — Food Packages. Fast Delivery."
+                           width={220}
+                           height={80}
+                           priority
+                           className="h-12 w-auto object-contain"
+                         />
             </div>
             <div className="leading-none">
               <span className="block font-display font-extrabold text-base text-green-400 leading-none">PASAM</span>

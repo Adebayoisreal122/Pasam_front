@@ -7,6 +7,7 @@ import { authAPI } from '@/services/api'
 import { Button } from '@/components/ui/button'
 import { Input, Label } from '@/components/ui/index'
 import toast from 'react-hot-toast'
+import Image from 'next/image'
 
 export default function RegisterPage() {
   const router  = useRouter()
@@ -40,7 +41,16 @@ export default function RegisterPage() {
         </div>
         <div className="relative z-10 text-center">
           <div className="w-20 h-20 rounded-2xl bg-white/20 flex items-center justify-center mx-auto mb-6">
-            <UserPlus size={40} className="text-white" />
+            {/* <UserPlus size={40} className="text-white" /> */}
+
+                        <Image
+                          src="/images/logo.png"
+                          alt="PASAM — Food Packages. Fast Delivery."
+                          width={220}
+                          height={80}
+                          priority
+                          className="h-12 w-auto object-contain"
+                        />
           </div>
           <h1 className="font-display font-extrabold text-3xl mb-3">Join PASAM Store</h1>
           <p className="text-orange-100 text-base leading-relaxed max-w-xs">
