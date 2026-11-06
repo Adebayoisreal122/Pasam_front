@@ -4,7 +4,7 @@ import { Store, Phone, Mail, MapPin, MessageCircle } from 'lucide-react'
 import Image from 'next/image'
 
 export default function Footer() {
-  const WA = process.env.NEXT_PUBLIC_WHATSAPP || '2348012345678'
+  const WA = process.env.NEXT_PUBLIC_WHATSAPP || '2349078757151'
 
   return (
     <footer className="bg-gray-900 text-gray-300 pt-12 pb-6 mt-16">
@@ -61,9 +61,9 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-semibold text-sm mb-3">Contact Us</h4>
             <ul className="space-y-2.5 text-sm">
-              <li className="flex items-center gap-2 text-gray-400"><Phone size={14} /> +234 801 234 5678</li>
-              <li className="flex items-center gap-2 text-gray-400"><Mail size={14} /> hello@pasamstore.com</li>
-              <li className="flex items-center gap-2 text-gray-400"><MapPin size={14} /> Ibadan, Oyo State</li>
+              <li className="flex items-center gap-2 text-gray-400"><Phone size={14} /> +234 907 875 7151</li>
+              <li className="flex items-center gap-2 text-gray-400"><Mail size={14} /> pasammobilestore@gmai.com</li>
+              <li className="flex items-center gap-2 text-gray-400"><MapPin size={14} /> Abeokuta, Ogun State</li>
               <li>
                 <a href={`https://wa.me/${WA}`} target="_blank" rel="noreferrer"
                   className="flex items-center gap-2 text-green-400 font-semibold hover:text-green-300 transition-colors">
