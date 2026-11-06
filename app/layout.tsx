@@ -11,7 +11,7 @@ import './globals.css'
       manifest: '/manifest.json',
       appleWebApp: { capable: true, title: 'PASAM', statusBarStyle: 'default' },
       icons: {
-        icon: '/icons/icon-192x192.png',
+        icon: '/icons/favicon-192x192.png',
         apple: '/icons/apple-touch-icon.png',
       },
     }
