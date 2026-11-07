@@ -318,9 +318,9 @@ export default function CheckoutContent() {
                   Transfer payment to:
                 </p>
                 {[
-                  ["Bank", "First Bank Nigeria"],
-                  ["Account Number", "1234567890"],
-                  ["Account Name", "PASAM Store Ltd"],
+                  ["Bank", "Palmpay"],
+                  ["Account Number", "8103559224"],
+                  ["Account Name", "Ajibola Oluwapamilerin Samsom"],
                 ].map(([k, v]) => (
                   <div key={k} className="flex justify-between">
                     <span className="text-gray-500">{k}</span>
