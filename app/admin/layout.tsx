@@ -53,7 +53,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       )}>
         <div className="flex items-center justify-between px-5 py-4 border-b border-white/10">
           <Link href="/store" className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-green-600 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center">
                          <Image
                            src="/images/logo.png"
                            alt="PASAM — Food Packages. Fast Delivery."

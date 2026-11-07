@@ -52,9 +52,9 @@ function OrderSuccessContent() {
           </div>
           <div className="space-y-2 text-sm">
             {[
-              ['Bank',      'First Bank Nigeria'],
-              ['Account',   '1234567890'],
-              ['Name',      'PASAM Store Ltd'],
+              ['Bank',      'Palmpay'],
+              ['Account',   '8103559224'],
+              ['Name',      'Ajibola Oluwapamilerin Samsom'],
               ['Reference', id?.slice(-8).toUpperCase() || 'Your Order ID'],
             ].map(([k, v]) => (
               <div key={k} className="flex justify-between items-center">
@@ -78,7 +78,7 @@ function OrderSuccessContent() {
             asChild
           >
             <a
-              href={waLink || `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP || '2348012345678'}?text=${encodeURIComponent(`Hi PASAM Store! I just placed an order. Order ID: ${id?.slice(-8).toUpperCase()}. Please confirm receipt.`)}`}
+              href={waLink || `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP || '2349078757151'}?text=${encodeURIComponent(`Hi PASAM Store! I just placed an order. Order ID: ${id?.slice(-8).toUpperCase()}. Please confirm receipt.`)}`}
               target="_blank"
               rel="noreferrer"
             >
