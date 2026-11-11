@@ -12,6 +12,7 @@ import { Button } from '@/components/ui/button'
 import ProductCard from '@/components/products/ProductCard'
    import CategoriesSection from '@/components/products/Categoriessection'
 import { formatPrice } from '@/lib/utils'
+import Image from 'next/image'
 
 const TESTIMONIALS = [
   { name: 'Amaka Johnson',   role: 'University Student',   text: 'The student pack is amazing! Feeds me well all week and saves me so much money compared to buying individually.', rating: 5 },
@@ -38,68 +39,264 @@ export default function HomePage() {
     <div>
       <InstallBanner />
       {/* ── Hero ── */}
-      <section className="relative min-h-[calc(100vh-70px)] flex items-center overflow-hidden bg-gradient-to-br from-green-50 via-white to-orange-50">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 right-0 w-[600px] h-[600px] -translate-y-1/2 translate-x-1/4 rounded-full bg-green-400/10 blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] translate-y-1/4 -translate-x-1/4 rounded-full bg-orange-400/10 blur-3xl" />
-        </div>
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid lg:grid-cols-2 gap-12 py-16 items-center w-full">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-green-100 text-green-700 rounded-full text-xs font-bold mb-5 border border-green-200">
-              <TrendingUp size={12} /> Nigeria&apos;s #1 Food Package Store
-            </div>
-            <h1 className="font-display font-extrabold text-gray-900 leading-[1.1] mb-5" style={{ fontSize: 'clamp(2.2rem,5vw,3.5rem)' }}>
-              Fresh Food Packs<br />
-              <span className="bg-gradient-to-r from-green-600 to-orange-500 bg-clip-text text-transparent">
-                Delivered Fast
-              </span>
-            </h1>
-            <p className="text-gray-600 text-lg leading-relaxed max-w-lg mb-8">
-              Affordable food packages for students, families, singles and organizations.
-              Order now and get doorstep delivery across Ogun State and beyond.
+{/* ==========================================
+    PREMIUM FOOD PACKAGE HERO
+========================================== */}
+
+<section className="food-hero relative isolate min-h-[650px] overflow-hidden bg-[#fffdf7] lg:min-h-[calc(100vh-70px)]">
+
+  {/* Background decorations */}
+  <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+
+    <div className="hero-glow hero-glow-green absolute -right-20 top-10 h-[450px] w-[450px] rounded-full bg-green-400/20 blur-[100px]" />
+
+    <div className="hero-glow hero-glow-orange absolute -bottom-40 left-0 h-[400px] w-[400px] rounded-full bg-orange-400/20 blur-[100px]" />
+
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_40%,rgba(34,197,94,0.06),transparent_40%)]" />
+
+  </div>
+
+  <div className="relative mx-auto grid w-full max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-8 lg:px-8 lg:py-20">
+
+    {/* LEFT CONTENT */}
+    <div className="hero-content relative z-20">
+
+      {/* Announcement badge */}
+      <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-green-200 bg-green-50 px-4 py-2 text-xs font-bold text-green-700 shadow-sm">
+
+        <TrendingUp size={15} />
+
+        Nigeria&apos;s #1 Food Package Store
+
+        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-green-500" />
+
+      </div>
+
+      {/* Main heading */}
+      <h1
+        className="max-w-2xl font-display text-4xl font-extrabold leading-[1.08] tracking-tight text-gray-950 sm:text-5xl lg:text-6xl xl:text-7xl"
+      >
+        Fresh Food Packs
+
+        <span className="mt-2 block bg-gradient-to-r from-green-600 via-green-500 to-orange-500 bg-clip-text text-transparent">
+          Delivered Fast.
+        </span>
+      </h1>
+
+      {/* Description */}
+      <p className="mt-6 max-w-xl text-base leading-8 text-gray-600 sm:text-lg">
+        Affordable food packages for students, families, singles and
+        organizations. Get quality food essentials delivered straight
+        to your doorstep across Ogun State and beyond.
+      </p>
+
+      {/* CTA Buttons */}
+      <div className="mt-8 flex flex-wrap items-center gap-4">
+
+        <Button
+          size="lg"
+          className="group h-14 rounded-full bg-green-600 px-8 text-base font-bold text-white shadow-lg shadow-green-600/20 transition-all duration-300 hover:-translate-y-1 hover:bg-green-700 hover:shadow-xl"
+          asChild
+        >
+          <Link href="/store/products">
+            Shop Now
+
+            <ArrowRight
+              size={19}
+              className="ml-2 transition-transform duration-300 group-hover:translate-x-1"
+            />
+          </Link>
+        </Button>
+
+        <Button
+          variant="outline"
+          size="lg"
+          className="h-14 rounded-full border-2 border-gray-200 bg-white px-7 text-base font-bold text-gray-800 transition-all duration-300 hover:-translate-y-1 hover:border-green-500 hover:bg-green-50"
+          asChild
+        >
+          <Link href="/store/bulk-quote">
+            Request Bulk Quote
+          </Link>
+        </Button>
+
+      </div>
+
+      {/* Trust statistics */}
+      <div className="mt-12 grid max-w-lg grid-cols-3 divide-x divide-gray-200">
+
+        {[
+          ["500+", "Happy Customers"],
+          ["20+", "Package Options"],
+          ["24hrs", "Delivery Time"],
+        ].map(([value, label]) => (
+
+          <div key={label} className="px-3 first:pl-0 last:pr-0">
+
+            <p className="font-display text-2xl font-extrabold text-green-700 sm:text-3xl">
+              {value}
             </p>
-            <div className="flex flex-wrap gap-3 mb-10">
-              <Button size="lg" asChild>
-                <Link href="/store/products">Shop Now <ArrowRight size={17} /></Link>
-              </Button>
-              <Button variant="outline" size="lg" asChild>
-                <Link href="/store/bulk-quote">Request Bulk Quote</Link>
-              </Button>
-            </div>
-            <div className="flex gap-8">
-              {[['500+', 'Happy Customers'], ['20+', 'Package Options'], ['24hrs', 'Delivery Time']].map(([v, l]) => (
-                <div key={l}>
-                  <p className="font-display font-extrabold text-2xl text-green-600">{v}</p>
-                  <p className="text-xs text-gray-500">{l}</p>
-                </div>
-              ))}
-            </div>
+
+            <p className="mt-1 text-[11px] font-medium text-gray-500 sm:text-xs">
+              {label}
+            </p>
+
           </div>
 
-          {/* Hero visual with icon cards */}
-          <div className="hidden lg:grid grid-cols-2 gap-4">
-            {[
-              { icon: GraduationCap, label: 'Student Pack',  price: 5500,  color: 'bg-green-50  border-green-200',  iconColor: 'text-green-600' },
-              { icon: Users,         label: 'Family Pack',   price: 35000, color: 'bg-yellow-50 border-yellow-200', iconColor: 'text-yellow-600' },
-              { icon: Home,          label: 'Singles Pack',  price: 12000, color: 'bg-orange-50 border-orange-200', iconColor: 'text-orange-600' },
-              { icon: Award,         label: 'Premium Pack',  price: 120000,color: 'bg-purple-50 border-purple-200', iconColor: 'text-purple-600' },
-            ].map((card, i) => (
-              <div key={card.label}
-                className={`border-2 rounded-2xl p-5 flex flex-col gap-3 animate-float ${card.color}`}
-                style={{ animationDelay: `${i * 0.4}s` }}>
-                <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-sm">
-                  <card.icon size={20} className={card.iconColor} />
-                </div>
-                <div>
-                  <p className="font-display font-bold text-sm text-gray-800">{card.label}</p>
-                  <p className="text-xs font-bold text-green-600">from {formatPrice(card.price)}</p>
-                </div>
-              </div>
-            ))}
+        ))}
+
+      </div>
+
+      {/* Small reassurance */}
+      <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-medium text-gray-500">
+
+        <span className="flex items-center gap-1.5">
+          <span className="text-green-600">✓</span>
+          Quality food products
+        </span>
+
+        <span className="flex items-center gap-1.5">
+          <span className="text-green-600">✓</span>
+          Affordable prices
+        </span>
+
+        <span className="flex items-center gap-1.5">
+          <span className="text-green-600">✓</span>
+          Doorstep delivery
+        </span>
+
+      </div>
+
+    </div>
+
+
+    {/* RIGHT CONTENT - FOOD SHOWCASE */}
+    <div className="hero-showcase relative mx-auto w-full max-w-xl lg:ml-auto">
+
+      {/* Background decorative circle */}
+      <div className="absolute left-1/2 top-1/2 aspect-square w-[85%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-green-100 via-green-50 to-orange-100 blur-2xl" />
+
+      <div className="absolute left-1/2 top-1/2 aspect-square w-[78%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-green-200/70" />
+
+      <div className="absolute left-1/2 top-1/2 aspect-square w-[65%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-orange-200/60" />
+
+
+      {/* Main food package image */}
+      <div className="hero-package relative z-10 mx-auto aspect-square w-full max-w-[520px]">
+
+        <Image
+          src="/images/pasam-hero.jfif"
+          alt="Premium Nigerian food package containing rice, beans and other groceries"
+          fill
+          priority
+          sizes="(max-width: 768px) 90vw, 45vw"
+          className="object-contain drop-shadow-2xl"
+        />
+
+      </div>
+
+
+      {/* Student pack floating card */}
+      <div className="hero-card hero-card-one absolute left-0 top-[12%] z-20 rounded-2xl border border-green-100 bg-white/95 p-3 shadow-xl shadow-green-900/10 backdrop-blur-md sm:left-[-15px] sm:p-4">
+
+        <div className="flex items-center gap-3">
+
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-green-100 text-green-600">
+            <GraduationCap size={23} />
           </div>
+
+          <div>
+            <p className="text-sm font-bold text-gray-800">
+              Student Pack
+            </p>
+
+            <p className="text-xs font-bold text-green-600">
+              From {formatPrice(5500)}
+            </p>
+          </div>
+
         </div>
-      </section>
+
+      </div>
+
+
+      {/* Family pack floating card */}
+      <div className="hero-card hero-card-two absolute right-0 top-[35%] z-20 rounded-2xl border border-orange-100 bg-white/95 p-3 shadow-xl shadow-orange-900/10 backdrop-blur-md sm:right-[-15px] sm:p-4">
+
+        <div className="flex items-center gap-3">
+
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-orange-100 text-orange-600">
+            <Users size={23} />
+          </div>
+
+          <div>
+            <p className="text-sm font-bold text-gray-800">
+              Family Pack
+            </p>
+
+            <p className="text-xs font-bold text-orange-600">
+              From {formatPrice(35000)}
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      {/* Delivery information card */}
+      <div className="hero-card hero-card-three absolute bottom-[7%] left-[8%] z-20 rounded-2xl border border-gray-100 bg-white/95 p-3 shadow-xl shadow-gray-900/10 backdrop-blur-md sm:p-4">
+
+        <div className="flex items-center gap-3">
+
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-100 text-blue-600">
+            <Truck size={23} />
+          </div>
+
+          <div>
+            <p className="text-sm font-bold text-gray-800">
+              Fast Delivery
+            </p>
+
+            <p className="text-xs text-gray-500">
+              Right to your doorstep
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      {/* Premium quality badge */}
+      <div className="hero-card hero-card-four absolute bottom-[15%] right-[2%] z-20 hidden rounded-2xl border border-purple-100 bg-white/95 p-3 shadow-xl backdrop-blur-md sm:block">
+
+        <div className="flex items-center gap-2">
+
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-purple-100 text-purple-600">
+            <Award size={20} />
+          </div>
+
+          <div>
+            <p className="text-xs font-bold text-gray-800">
+              Premium Quality
+            </p>
+
+            <p className="text-[10px] text-gray-500">
+              Carefully selected
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
 
       {/* ── Feature strip ── */}
       <section className="bg-white border-y border-gray-100 py-5">
