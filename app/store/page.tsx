@@ -185,7 +185,7 @@ export default function HomePage() {
       <div className="hero-package relative z-10 mx-auto aspect-square w-full max-w-[520px]">
 
         <Image
-          src="/images/pasam-hero.jfif"
+          src="/images/pasam-hero.png"
           alt="Premium Nigerian food package containing rice, beans and other groceries"
           fill
           priority
