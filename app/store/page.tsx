@@ -10,6 +10,7 @@ import InstallBanner from '@/components/pwa/InstallBanner'
 import { productAPI } from '@/services/api'
 import { Button } from '@/components/ui/button'
 import ProductCard from '@/components/products/ProductCard'
+   import CategoriesSection from '@/components/products/Categoriessection'
 import { formatPrice } from '@/lib/utils'
 
 const TESTIMONIALS = [
@@ -17,13 +18,6 @@ const TESTIMONIALS = [
   { name: 'Pastor David Obi',role: 'Church Administrator', text: 'We use PASAM for all our welfare distributions. The bulk order service is professional and always on time.',     rating: 5 },
   { name: 'Mrs. Folake A.',  role: 'Mother of 4',          text: 'The family pack is a lifesaver. Fresh, affordable, and delivered right to my door. Highly recommended!',         rating: 5 },
   { name: 'Emeka Nze',       role: 'Young Professional',   text: 'As a bachelor living alone, the singles pack is perfect. No food waste and great value for money.',              rating: 5 },
-]
-
-const CATEGORIES = [
-  { slug: 'student-packages', icon: GraduationCap, name: 'Student Packages', desc: 'Budget-friendly packs for students', bg: 'bg-green-50',  border: 'border-green-200',  iconColor: 'text-green-600',  iconBg: 'bg-green-100' },
-  { slug: 'singles-packages', icon: Home,          name: 'Singles Package',  desc: 'Perfect for bachelors & workers',   bg: 'bg-orange-50', border: 'border-orange-200', iconColor: 'text-orange-600', iconBg: 'bg-orange-100' },
-  { slug: 'family-packages',  icon: Users,         name: 'Family Package',   desc: 'Monthly supply for households',     bg: 'bg-yellow-50', border: 'border-yellow-200', iconColor: 'text-yellow-600', iconBg: 'bg-yellow-100' },
-  { slug: 'premium-packages', icon: Award,         name: 'Premium / Bulk',   desc: 'Churches, NGOs & organizations',    bg: 'bg-purple-50', border: 'border-purple-200', iconColor: 'text-purple-600', iconBg: 'bg-purple-100' },
 ]
 
 const LOCATIONS = ['Ibadan', 'Ogbomosho', 'Oyo', 'Iseyin', 'Saki', 'Abeokuta', 'Ijebu-Ode', 'Sagamu', 'Lagos', 'Osogbo']
@@ -129,34 +123,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Categories ── */}
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="font-display font-extrabold text-2xl text-gray-900">Shop by Category</h2>
-            <Link href="/store/products" className="flex items-center gap-1 text-green-600 font-semibold text-sm hover:gap-2 transition-all">
-              View all <ArrowRight size={14} />
-            </Link>
-          </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            {CATEGORIES.map(cat => (
-              <Link key={cat.slug} href={`/store/categories/${cat.slug}`}
-                className={`group p-5 rounded-2xl border-2 ${cat.bg} ${cat.border} hover:-translate-y-1 hover:shadow-lg transition-all duration-300 flex flex-col gap-3`}>
-                <div className={`w-11 h-11 rounded-xl ${cat.iconBg} flex items-center justify-center`}>
-                  <cat.icon size={20} className={cat.iconColor} />
-                </div>
-                <div>
-                  <h3 className="font-display font-extrabold text-sm text-gray-800">{cat.name}</h3>
-                  <p className="text-xs text-gray-500 leading-snug mt-0.5">{cat.desc}</p>
-                </div>
-                <div className="w-7 h-7 rounded-full bg-white flex items-center justify-center text-green-600 shadow-sm group-hover:translate-x-1 transition-transform mt-auto">
-                  <ArrowRight size={13} />
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+   <CategoriesSection />
 
       {/* ── Featured Products ── */}
       <section className="py-16 bg-gray-50">
