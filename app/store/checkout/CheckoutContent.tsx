@@ -27,16 +27,6 @@ const DELIVERY_FEES: Record<string, number> = {
   Kano: 3000,
 };
 const DEFAULT_FEE = 2000;
-const CITIES = [
-  "Ibadan",
-  "Lagos",
-  "Abuja",
-  "Port Harcourt",
-  "Kano",
-  "Ogbomosho",
-  "Abeokuta",
-  "Other",
-];
 
 const LOCATIONS: Record<string, string[]> = {
   Lagos: [

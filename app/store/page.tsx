@@ -21,7 +21,7 @@ const TESTIMONIALS = [
   { name: 'Emeka Nze',       role: 'Young Professional',   text: 'As a bachelor living alone, the singles pack is perfect. No food waste and great value for money.',              rating: 5 },
 ]
 
-const LOCATIONS = ['Ibadan', 'Ogbomosho', 'Oyo', 'Iseyin', 'Saki', 'Abeokuta', 'Ijebu-Ode', 'Sagamu', 'Lagos', 'Osogbo']
+const LOCATIONS = ['Abeokuta', 'Ikeja', 'Ogun', 'Sango-Ota', 'Lekki', 'Iwo-road', 'Sagamu', 'Lagos', 'Badagry', 'Mowe', 'Agbara', 'Challenge', 'Ojoo']
 
 export default function HomePage() {
   const [featured, setFeatured] = useState<any[]>([])
@@ -38,11 +38,9 @@ export default function HomePage() {
   return (
     <div>
       <InstallBanner />
-      {/* ── Hero ── */}
+     
 
-{/* ==========================================
-    PREMIUM FOOD PACKAGE HERO
-========================================== */}
+{/*  PREMIUM FOOD PACKAGE HERO */}
 
 <section className="food-hero relative isolate min-h-[650px] overflow-hidden bg-[#fffdf7] lg:min-h-[calc(100vh-70px)]">
 
@@ -445,7 +443,7 @@ export default function HomePage() {
           </div>
           <p className="text-center text-gray-500 text-sm mt-4">
             Don&apos;t see your area?{' '}
-            <a href="https://wa.me/2348012345678" className="text-green-600 font-semibold hover:underline">
+            <a href="https://wa.me/2349078757151" className="text-green-600 font-semibold hover:underline">
               Contact us
             </a>{' '}
             — we may still deliver!
