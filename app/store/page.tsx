@@ -363,7 +363,7 @@ export default function HomePage() {
                   <Link href="/store/bulk-quote">Get Free Quote</Link>
                 </Button>
                 <Button variant="outline" className="border-white/60 text-white hover:bg-white/10" asChild>
-                  <a href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP || '2348012345678'}`} target="_blank" rel="noreferrer">
+                  <a href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP || '2349078757151'}`} target="_blank" rel="noreferrer">
                     <MessageCircle size={16} /> WhatsApp Us
                   </a>
                 </Button>
