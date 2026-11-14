@@ -15,7 +15,7 @@ const NAV = [
   { to: '/admin/orders',     icon: ShoppingBag,     label: 'Orders' },
   { to: '/admin/products',   icon: Package,         label: 'Products' },
   { to: '/admin/categories', icon: Tag,             label: 'Categories' },
-  { to: '/admin/custom-items', icon: Puzzle, label: 'Build Your Own' },
+  { to: '/admin/custom-items', icon: Puzzle, label: 'Custom Package' },
   { to: '/admin/users',      icon: Users,           label: 'Customers' },
   { to: '/admin/coupons',    icon: Ticket,          label: 'Coupons' },
   { to: '/admin/quotes',     icon: FileText,        label: 'Bulk Quotes' },
