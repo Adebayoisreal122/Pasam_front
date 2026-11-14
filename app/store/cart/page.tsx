@@ -65,7 +65,7 @@ export default function CartPage() {
                   : <Package size={28} className="text-gray-300" />}
               </div>
               <div className="flex-1 min-w-0">
-                <Link href={`/store/products/${item.slug||item._id}`}
+                <Link href={item.isCustom ? '/store/build-your-own' : `/store/products/${item.slug || item._id}`}
                   className="font-semibold text-gray-800 hover:text-green-600 transition-colors line-clamp-2 leading-snug text-sm">
                   {item.name}
                 </Link>

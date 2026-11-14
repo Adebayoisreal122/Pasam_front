@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import {
   LayoutDashboard, Package, ShoppingBag, Users, Tag, Ticket,
-  FileText, BarChart2, LogOut, Menu, X, ChevronRight, ExternalLink, Store
+  FileText, BarChart2, Puzzle, LogOut, Menu, X, ChevronRight, ExternalLink, Store
 } from 'lucide-react'
 import { useAuth } from '@/context/AuthContext'
 import { cn } from '@/lib/utils'
@@ -15,6 +15,7 @@ const NAV = [
   { to: '/admin/orders',     icon: ShoppingBag,     label: 'Orders' },
   { to: '/admin/products',   icon: Package,         label: 'Products' },
   { to: '/admin/categories', icon: Tag,             label: 'Categories' },
+  { to: '/admin/custom-items', icon: Puzzle, label: 'Build Your Own' },
   { to: '/admin/users',      icon: Users,           label: 'Customers' },
   { to: '/admin/coupons',    icon: Ticket,          label: 'Coupons' },
   { to: '/admin/quotes',     icon: FileText,        label: 'Bulk Quotes' },

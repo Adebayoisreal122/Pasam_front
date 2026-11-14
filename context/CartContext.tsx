@@ -2,17 +2,20 @@
 import React, { createContext, useContext, useState, useEffect } from 'react'
 import toast from 'react-hot-toast'
 
-interface CartItem {
-  _id: string
-  name: string
-  price: number
-  quantity: number
-  images?: { url: string }[]
-  category?: { name: string }
-  stock?: number
-  slug?: string
-}
-
+    interface CartItem {
+      _id: string
+      name: string
+      price: number
+      quantity: number
+      images?: { url: string }[]
+      category?: { name: string }
+      stock?: number
+      slug?: string
+      isCustom?: boolean
+      label?: string
+      customItems?: { itemId: string; name: string; unit: string; price: number; quantity: number }[]
+    }
+    
 interface Coupon {
   code: string
   type: 'percentage' | 'fixed'

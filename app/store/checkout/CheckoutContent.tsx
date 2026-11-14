@@ -138,7 +138,15 @@ export default function CheckoutContent() {
     setLoading(true);
     try {
       const { data } = await orderAPI.create({
-        items: items.map((i) => ({ product: i._id, quantity: i.quantity })),
+            items: items.map(i =>
+      i.isCustom
+        ? {
+            quantity: i.quantity,
+            label: i.label,
+            custom: (i.customItems || []).map(c => ({ item: c.itemId, quantity: c.quantity })),
+          }
+        : { product: i._id, quantity: i.quantity }
+    ),
         deliveryInfo: delivery,
         couponCode: coupon?.code || undefined,
         isSubscription: false,

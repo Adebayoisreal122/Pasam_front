@@ -26,7 +26,9 @@ const NAV_LINKS = [
   { label: "Products", href: "/store/products" },
   { label: "Student Packs", href: "/store/categories/student-packages" },
   { label: "Family Packs", href: "/store/categories/family-packages" },
+  { label: 'Custom Package', href: '/store/build-your-own' },
   { label: "Bulk Orders", href: "/store/bulk-quote" },
+  
 ];
 
 export default function Navbar() {

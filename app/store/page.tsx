@@ -13,6 +13,7 @@ import ProductCard from '@/components/products/ProductCard'
    import CategoriesSection from '@/components/products/Categoriessection'
 import { formatPrice } from '@/lib/utils'
 import Image from 'next/image'
+import BuildYourOwnBanner from '@/components/products/BuildYourOwnBanner'
 
 const TESTIMONIALS = [
   { name: 'Amaka Johnson',   role: 'University Student',   text: 'The student pack is amazing! Feeds me well all week and saves me so much money compared to buying individually.', rating: 5 },
@@ -319,6 +320,8 @@ export default function HomePage() {
       </section>
 
    <CategoriesSection />
+
+   <BuildYourOwnBanner />
 
       {/* ── Featured Products ── */}
       <section className="py-16 bg-gray-50">
